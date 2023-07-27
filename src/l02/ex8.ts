@@ -14,7 +14,7 @@ function convertSecondsToTime(seconds: number): string {
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;
 
-   return hours +":" + minutes +":" + remainingSeconds;
+    return hours + ":" + minutes + ":" + remainingSeconds;
 
 
 }
@@ -26,13 +26,33 @@ function convertSecondsToTime(seconds: number): string {
  * @param timeseconds 
  * @returns 
  */
-export function convertSecondsInHoursMinutesSeconds(timeseconds: number): string{
-    const secondsInMinutes:  number = Math.trunc(timeseconds / 60);
-    const secondsInSeconds: number = timeseconds % 60;
-    const minutesInHours: number = Math.trunc(secondsInMinutes / 60);
+export function convertSecondsInHoursMinutesSeconds(timeSeconds: number): string {
+    let secondsInMinutes: number = Math.trunc(timeSeconds / 60);
+    let seconds: number = timeSeconds % 60;
+    let minutesInHours: number = Math.trunc(secondsInMinutes / 60);
     const modMinutes: number = secondsInMinutes % 60;
+    let modMinutesString: string = "";
+    let secondsString: string = "";
 
-    return minutesInHours +":" + modMinutes +":" + secondsInSeconds;
+    if (minutesInHours > 24) {
+        minutesInHours = minutesInHours % 24;
+    }
+
+    if (modMinutes < 10) {
+        modMinutesString = 0 + modMinutes.toString();
+    }
+    else{
+        modMinutesString = modMinutes.toString();
+    }
+
+    if (seconds < 10) {
+        secondsString = 0 + seconds.toString();
+    }
+    else{
+        secondsString = seconds.toString();
+    }
+
+    return minutesInHours + ":" + modMinutesString + ":" + secondsString;
 }
 
 
