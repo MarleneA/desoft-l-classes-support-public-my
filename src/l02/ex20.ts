@@ -7,6 +7,11 @@ extra e 15€ por cada uma das restantes horas extra. Elabore uma solução (mé
 e retorne o salário semanal de um empregado a partir do nº de horas que este trabalhou
  */
 
+/**
+ * 
+ * @param extraHours 
+ * @returns 
+ */
 function calculateWeeklySalaryWithExtraHours(extraHours: number): number{
     const weeklySalaryWithoutExtraHours: number = 270;
     let extraHoursPayment: number;
