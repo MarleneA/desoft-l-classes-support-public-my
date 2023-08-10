@@ -24,7 +24,7 @@ function determineDigitsWithMathematic(givenNumber: number) {
 
     while (givenNumber > 0) {
         digitsNumber++;
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return digitsNumber;
 }
@@ -40,7 +40,7 @@ function evenDigits(givenNumber: number): number {
         if (digit % 2 == 0) {
             evenDigit++;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return evenDigit;
 }
@@ -56,7 +56,7 @@ function oddDigits(givenNumber: number): number {
         if (digit % 2 != 0) {
             oddDigit++;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return oddDigit;
 }
@@ -68,7 +68,7 @@ function sumDigits(givenNumber: number): number {
 
     while (givenNumber > 0) {
         digit = givenNumber % 10;
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
         sumDigit = sumDigit + digit;
     }
     return sumDigit;
@@ -85,7 +85,7 @@ function sumEvenDigits(givenNumber: number): number {
         if (evenDigit % 2 == 0) {
             sumEvenDigit = sumEvenDigit + evenDigit;;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return sumEvenDigit;
 }
@@ -101,7 +101,7 @@ function sumOddDigits(givenNumber: number): number {
         if (oddDigit % 2 != 0) {
             sumOddDigit = sumOddDigit + oddDigit;;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return sumOddDigit;
 }
@@ -115,7 +115,7 @@ function averageDigits(givenNumber: number): number {
 
     while (givenNumber > 0) {
         digit = givenNumber % 10;
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
         sumDigit = sumDigit + digit;
         cont++;
     }
@@ -135,7 +135,7 @@ function averageEvenDigits(givenNumber: number): number {
             even = even + digit;
             evenDigit++;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return even / evenDigit;
 }
@@ -153,24 +153,26 @@ function averageOddDigits(givenNumber: number): number {
             odd = odd + digit;
             oddDigit++;
         }
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     }
     return odd / oddDigit;
 }
 
 //j) Um número inteiro cujos dígitos estão pela ordem inversa (e.g. dado 987 retorna 789).
-function reverseOrder(givenNumber: number): number {
+export function reverseOrder(givenNumber: number): number {
+    if(Math.abs(givenNumber) / 10 < 1){
+        throw new Error("Introduce a number with two or more digits");
+    }
     let digit: number = 0;
     let reverseNumber: number = 0;
 
-    while (givenNumber > 0) {
+    while (Math.abs(givenNumber) > 0) {
         digit = givenNumber % 10;
         reverseNumber = reverseNumber * 10 + digit;
-        givenNumber = Math.floor(givenNumber / 10);
+        givenNumber = Math.trunc(givenNumber / 10);
     
     }
 return reverseNumber;
 }
-console.log(reverseOrder(987));
 
 
